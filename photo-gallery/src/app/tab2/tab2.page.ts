@@ -10,11 +10,8 @@ import {PhotoService} from '../services/photo.service'
 export class Tab2Page {
 
   constructor(public photoService:PhotoService) {}
-  async ngOnInit() {
-    await this.photoService.loadSaved();
-  }
-  
-  addPhotoToGallery(){
-    this.photoService.addNewToGallery();
-  }
+    async addPhotoToGallery(){
+      await this.photoService.addNewToGallery();
+    }
+
 }
