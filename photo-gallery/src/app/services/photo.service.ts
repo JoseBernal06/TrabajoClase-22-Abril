@@ -79,6 +79,22 @@ export class PhotoService {
     }
   }
 
+  public async photo50(){
+    const capturedPhoto=await Camera.getPhoto({
+      resultType:CameraResultType.Uri,
+      source:CameraSource.Camera,
+      quality:50
+    });
+
+    const savedImageFile=await this.savePicture(capturedPhoto)
+    this.photos.unshift(savedImageFile)
+
+    Preferences.set({
+      key: this.PHOTO_STORAGE,
+      value: JSON.stringify(this.photos),
+    });
+  } 
+
   public async addNewToGallery(){
     const capturedPhoto=await Camera.getPhoto({
       resultType:CameraResultType.Uri,
